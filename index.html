@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Générateur de Prévisions</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .animated {
+            animation-duration: 1s;
+            animation-fill-mode: both;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 <body>
 <div class="container mt-5">
@@ -39,8 +53,12 @@
         // Génère une prévision aléatoire pour le prénom
         const randomForecast = generateRandomForecast(nameInput);
 
-        // Affiche la prévision
-        document.getElementById('forecastResult').innerText = `Prévision pour ${nameInput} : ${randomForecast}`;
+        // Affiche la prévision avec une animation de fondu
+        const forecastResult = document.getElementById('forecastResult');
+        forecastResult.classList.remove('animated', 'fadeIn');
+        void forecastResult.offsetWidth; // Réinitialise l'animation
+        forecastResult.innerText = `Prévision pour ${nameInput} : ${randomForecast}`;
+        forecastResult.classList.add('animated', 'fadeIn');
     }
 
     function generateRandomForecast(name) {
@@ -49,7 +67,33 @@
             `${name} fera une rencontre qui changera sa vie.`,
             `${name} recevra de bonnes nouvelles concernant son avenir.`,
             `${name} aura du succès dans ses projets à venir.`,
-            `${name} devra faire face à un défi inattendu, mais le surmontera avec brio.`
+            `${name} devra faire face à un défi inattendu, mais le surmontera avec brio.`,
+            `${name} fera un voyage inoubliable.`,
+            `${name} découvrira une passion qui le passionnera.`,
+            `${name} aura l'opportunité d'apprendre quelque chose de nouveau et d'excitant.`,
+            `${name} fera preuve de créativité dans un projet important.`,
+            `${name} recevra des éloges pour son travail acharné et son dévouement.`,
+            `${name} rencontrera quelqu'un qui deviendra un ami proche.`,
+            `${name} fera une découverte qui changera sa perspective sur la vie.`,
+            `${name} aura l'occasion de se dépasser et d'atteindre de nouveaux sommets.`,
+            `${name} sera inspiré par une personne influente dans sa vie.`,
+            `${name} surmontera un obstacle majeur avec grâce et détermination.`,
+            `${name} aidera quelqu'un dans le besoin, ce qui lui apportera une grande satisfaction.`,
+            `${name} recevra une récompense pour ses efforts et son engagement.`,
+            `${name} trouvera un équilibre entre travail et vie personnelle.`,
+            `${name} prendra une décision importante qui lui apportera beaucoup de bonheur.`,
+            `${name} fera preuve de courage dans une situation difficile.`,
+            `${name} recevra des nouvelles positives d'un membre de sa famille.`,
+            `${name} découvrira un talent caché qui lui ouvrira de nouvelles opportunités.`,
+            `${name} fera preuve de compassion envers quelqu'un qui en a besoin.`,
+            `${name} vivra un moment de joie et de bonheur pur.`,
+            `${name} trouvera la force intérieure pour surmonter une peur profonde.`,
+            `${name} sera reconnu pour ses talents et ses réalisations.`,
+            `${name} découvrira une nouvelle passion qui lui apportera beaucoup de joie.`,
+            `${name} fera une différence positive dans la vie de quelqu'un d'autre.`,
+            `${name} apprendra une leçon précieuse qui le guidera dans l'avenir.`,
+            `${name} recevra une opportunité inattendue qui changera sa vie.`,
+            `${name} se lancera dans une nouvelle aventure passionnante.`
         ];
         const randomIndex = Math.floor(Math.random() * forecasts.length);
         return forecasts[randomIndex];
