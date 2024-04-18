@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur de Prévisions</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title text-center mb-4">Générateur de Prévisions</h1>
+                    <div class="form-group">
+                        <label for="nameInput">Entrer un prénom :</label>
+                        <input type="text" id="nameInput" class="form-control">
+                    </div>
+                    <button onclick="generateForecast()" class="btn btn-primary btn-block mt-3">Générer Prévision</button>
+                    <p id="forecastResult" class="mt-4 text-center"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function generateForecast() {
+        // Récupère le prénom saisi par l'utilisateur
+        const nameInput = document.getElementById('nameInput').value.trim();
+
+        // Vérifie si le prénom est vide
+        if (nameInput === '') {
+            document.getElementById('forecastResult').innerText = 'Veuillez entrer un prénom.';
+            return;
+        }
+
+        // Génère une prévision aléatoire pour le prénom
+        const randomForecast = generateRandomForecast(nameInput);
+
+        // Affiche la prévision
+        document.getElementById('forecastResult').innerText = `Prévision pour ${nameInput} : ${randomForecast}`;
+    }
+
+    function generateRandomForecast(name) {
+        const forecasts = [
+            `${name} rencontrera une opportunité excitante.`,
+            `${name} fera une rencontre qui changera sa vie.`,
+            `${name} recevra de bonnes nouvelles concernant son avenir.`,
+            `${name} aura du succès dans ses projets à venir.`,
+            `${name} devra faire face à un défi inattendu, mais le surmontera avec brio.`
+        ];
+        const randomIndex = Math.floor(Math.random() * forecasts.length);
+        return forecasts[randomIndex];
+    }
+</script>
+</body>
+</html>
